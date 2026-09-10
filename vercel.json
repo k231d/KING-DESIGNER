@@ -1,0 +1,18 @@
+{
+  "buildCommand": "pnpm build",
+  "devCommand": "pnpm dev",
+  "installCommand": "pnpm install",
+  "framework": "vite",
+  "public": true,
+  "env": {
+    "VITE_SUPABASE_URL": {
+      "description": "Supabase project URL",
+      "required": true
+    },
+    "VITE_SUPABASE_ANON_KEY": {
+      "description": "Supabase anonymous key",
+      "required": true
+    }
+  },
+  "buildOutputDirectory": "dist/public"
+}
