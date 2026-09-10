@@ -1,9 +1,11 @@
 {
-  "buildCommand": "pnpm build",
+  "buildCommand": "pnpm install --frozen-lockfile && pnpm build",
   "devCommand": "pnpm dev",
-  "installCommand": "pnpm install",
+  "installCommand": "pnpm install --frozen-lockfile",
   "framework": "vite",
   "public": true,
+  "outputDirectory": "dist/public",
+  "regions": ["sfo1"],
   "env": {
     "VITE_SUPABASE_URL": {
       "description": "Supabase project URL",
@@ -12,7 +14,17 @@
     "VITE_SUPABASE_ANON_KEY": {
       "description": "Supabase anonymous key",
       "required": true
+    },
+    "NODE_ENV": {
+      "value": "production"
     }
   },
-  "buildOutputDirectory": "dist/public"
+  "buildOutputDirectory": "dist/public",
+  "installCommand": "corepack enable pnpm && pnpm install --frozen-lockfile",
+  "nodeVersion": "20.x",
+  "functions": {
+    "server/index.ts": {
+      "runtime": "nodejs20.x"
+    }
+  }
 }
