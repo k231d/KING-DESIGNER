@@ -1,0 +1,353 @@
+@config "../../tailwind.config.js";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&family=Cairo:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-primary: #FFFFFF;
+    --bg-secondary: #FFFBEB;
+    --text-primary: #1A1A1A;
+    --text-secondary: #6B7280;
+  }
+
+  .dark {
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #141414;
+    --text-primary: #FFFBEB;
+    --text-secondary: #A1A1AA;
+  }
+
+  body {
+    @apply bg-surface-light dark:bg-surface-dark text-gray-900 dark:text-king-50 transition-colors duration-300;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  [dir="rtl"] body {
+    font-family: 'Cairo', 'Inter', system-ui, sans-serif;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #FBBF24 transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #FBBF24;
+    border-radius: 3px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-king-500 hover:bg-king-600 text-white font-medium rounded-xl px-4 py-2.5 transition-all duration-200 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply bg-king-100 dark:bg-surface-dark-card hover:bg-king-200 dark:hover:bg-surface-dark-border text-king-700 dark:text-king-200 font-medium rounded-xl px-4 py-2.5 transition-all duration-200 active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-king-100 dark:hover:bg-surface-dark-card text-gray-700 dark:text-gray-300 font-medium rounded-xl px-4 py-2.5 transition-all duration-200 active:scale-95;
+  }
+
+  .card {
+    @apply bg-white dark:bg-surface-dark-card border border-king-100 dark:border-surface-dark-border rounded-2xl shadow-sm;
+  }
+
+  .input-field {
+    @apply w-full bg-king-50 dark:bg-surface-dark-alt border border-king-200 dark:border-surface-dark-border rounded-xl px-4 py-2.5 text-gray-900 dark:text-king-50 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-king-400 focus:border-transparent transition-all duration-200;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-vip {
+    @apply bg-gradient-to-r from-king-400 to-king-600 text-white;
+  }
+
+  .badge-pro {
+    @apply bg-gradient-to-r from-king-500 to-accent-500 text-white;
+  }
+
+  .badge-verified {
+    @apply bg-success-100 dark:bg-success-700/30 text-success-600 dark:text-success-400;
+  }
+
+  .badge-rank {
+    @apply bg-gradient-to-r from-king-600 to-king-800 text-white;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-king-100 dark:hover:bg-surface-dark-card hover:text-king-600 dark:hover:text-king-400 transition-all duration-200 cursor-pointer;
+  }
+
+  .nav-item-active {
+    @apply bg-king-100 dark:bg-surface-dark-card text-king-600 dark:text-king-400 font-medium;
+  }
+
+  .glass {
+    @apply backdrop-blur-md bg-white/80 dark:bg-surface-dark/80 border border-king-100/50 dark:border-surface-dark-border/50;
+  }
+}
+
+/* Custom scrollbar for chat */
+.chat-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.chat-scroll::-webkit-scrollbar-thumb {
+  background-color: #FBBF24;
+  border-radius: 2px;
+}
+
+/* Story ring gradient */
+.story-ring {
+  background: linear-gradient(135deg, #FBBF24, #F59E0B, #D97706);
+  padding: 2.5px;
+  border-radius: 9999px;
+}
+
+.story-ring-viewed {
+  background: #D1D5DB;
+  padding: 2.5px;
+  border-radius: 9999px;
+}
+
+/* Shimmer loading */
+.shimmer-bg {
+  background: linear-gradient(90deg, #FEF3C7 0%, #FDE68A 50%, #FEF3C7 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+.dark .shimmer-bg {
+  background: linear-gradient(90deg, #1A1A1A 0%, #2A2A2A 50%, #1A1A1A 100%);
+  background-size: 1000px 100%;
+}
+
+/* VIP gradient text */
+.vip-text {
+  background: linear-gradient(135deg, #FBBF24, #F59E0B, #D97706);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Pro gradient text */
+.pro-text {
+  background: linear-gradient(135deg, #F59E0B, #F97316);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animated gradient name for VIP/PRO users */
+.animated-name {
+  background: linear-gradient(270deg, #FBBF24, #F59E0B, #D97706, #FBBF24);
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Splash screen */
+.splash-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  animation: fade-in 0.3s ease;
+}
+
+.splash-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+
+.splash-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+}
+
+.splash-skip {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 3;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  border: 1px solid rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.splash-skip:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.splash-countdown {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  color: white;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.splash-progress {
+  width: 120px;
+  height: 3px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.splash-progress-bar {
+  height: 100%;
+  background: #FBBF24;
+  border-radius: 9999px;
+  transition: width 0.1s linear;
+}
+
+/* Badge styles for VIP/PRO/Rank */
+.badge-vip-tag {
+  background: linear-gradient(135deg, #FBBF24, #F59E0B);
+  color: white;
+  font-weight: 600;
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.badge-pro-tag {
+  background: linear-gradient(135deg, #F59E0B, #F97316);
+  color: white;
+  font-weight: 600;
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.badge-rank-tag {
+  background: linear-gradient(135deg, #92400E, #78350F);
+  color: #FDE68A;
+  font-weight: 600;
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Mobile touch-friendly transitions */
+@media (max-width: 768px) {
+  body { padding-bottom: env(safe-area-inset-bottom); }
+  input, textarea, select { font-size: 16px; }
+  .mobile-bottom-nav { padding-bottom: max(0.5rem, env(safe-area-inset-bottom)); }
+  .mobile-transition {
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease;
+  }
+
+  button, a, [role="button"] {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:active, a:active, [role="button"]:active {
+    transform: scale(0.98);
+  }
+
+  button {
+    min-height: 36px;
+  }
+
+  .chat-scroll,
+  .overflow-y-auto {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+  }
+
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .overflow-x-auto::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Story player controls */
+.story-control-btn {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(8px);
+  border-radius: 9999px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+}
+
+.story-control-btn:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+.story-control-btn:active {
+  transform: scale(0.9);
+}
+
+.story-progress-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 9999px;
+  overflow: hidden;
+  flex: 1;
+}
+
+.story-progress-fill {
+  height: 100%;
+  background: white;
+  border-radius: 9999px;
+}
